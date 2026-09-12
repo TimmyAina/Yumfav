@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yumfav — Your Taste, Your Fave | Macro-Friendly Meals for Healthy Gains &amp; Fat Loss</title>
+  <meta name="description" content="Stop choosing between flavor &amp; fitness! Yumfav delivers delicious, chef-crafted, macro-balanced meals across Lagos. Your taste, your fave." />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Yumfav — Your Taste, Your Fave" />
+  <meta property="og:description" content="Stop choosing between flavor &amp; fitness! Macro-friendly meals for healthy gains &amp; sustainable weight loss." />
+  <meta property="og:image" content="logo.jpg" />
+  <link rel="icon" type="image/jpeg" href="logo.jpg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Brand colors inspired directly by Yumfav's warm golden skillet logo */
+      --bg: #0c0d10;
+      --surface: #14151a;
+      --surface-card: #191b22;
+      --surface-elevated: #21232d;
+      --border: rgba(251, 191, 36, 0.16);
+      --border-bright: rgba(251, 191, 36, 0.38);
+      
+      /* Primary Golden Yellow Palette */
+      --primary: #fbbf24;         /* Vibrant golden yellow from skillet */
+      --primary-glow: #fde047;    /* Bright sunny yellow highlight */
+      --primary-dark: #d97706;    /* Rich warm amber */
+      
+      /* Secondary & Macro Indicator Accents */
+      --accent-warm: #f97316;     /* Saffron flame accent */
+      --protein-green: #34d399;   /* High protein indicator */
+      --carb-blue: #38bdf8;       /* Carbs indicator */
+      --fat-coral: #fb7185;       /* Healthy fats indicator */
+
+      /* Neutral Typography */
+      --text: #f8fafc;
+      --muted: #a1a1aa;
+      --subtle: #71717a;
+      
+      /* Radius & Shadows */
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --shadow: 0 10px 30px -10px rgba(0,0,0,0.7);
+      --shadow-glow: 0 0 25px rgba(251, 191, 36, 0.22);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(12, 13, 16, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 78px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .brand-logo-img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 14px rgba(251, 191, 36, 0.3);
+      object-fit: cover;
+      background: #f59e0b;
+    }
+    .logo-text-col {
+      display: flex;
+      flex-direction: column;
+    }
+    .logo-name {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .logo-tagline {
+      font-size: 0.68rem;
+      color: var(--primary);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-menu a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .nav-menu a:hover {
+      color: var(--primary-glow);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cart-trigger-btn {
+      position: relative;
+      background: var(--surface-card);
+      border: 1px solid var(--border-bright);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .cart-trigger-btn:hover {
+      background: var(--surface-elevated);
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-1px);
+    }
+    .cart-counter {
+      background: var(--primary);
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 99px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #0c0d10;
+      box-shadow: 0 4px 20px rgba(251, 191, 36, 0.35);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--primary-glow), var(--primary));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(251, 191, 36, 0.5);
+    }
+    .btn-secondary {
+      background: var(--surface-card);
+      border: 1px solid var(--border-bright);
+      color: #fff;
+    }
+    .btn-secondary:hover {
+      background: var(--surface-elevated);
+      color: var(--primary-glow);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .btn-whatsapp {
+      background: #25d366;
+      color: #000;
+      font-weight: 800;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+    .btn-whatsapp:hover {
+      background: #2ee672;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 100px 0 85px;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 15%, rgba(251, 191, 36, 0.14) 0%, rgba(12, 13, 16, 0) 65%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 60px;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 3.8rem;
+      line-height: 1.1;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+    .hero h1 span.gradient-text {
+      background: linear-gradient(135deg, #fff 20%, var(--primary-glow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero h1 span.accent-text {
+      color: var(--primary);
+      text-shadow: 0 0 30px rgba(251, 191, 36, 0.4);
+    }
+    .hero p.lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 580px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      max-width: 540px;
+    }
+    .stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: #fff;
+    }
+    .stat-num span { color: var(--primary); }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-card-preview {
+      position: relative;
+    }
+    .hero-main-img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-bright);
+      box-shadow: var(--shadow);
+    }
+    .hero-floating-badge {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: rgba(25, 27, 34, 0.94);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-bright);
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      max-width: 280px;
+    }
+    .badge-macro-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .macro-tag {
+      background: rgba(255,255,255,0.06);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+    .macro-tag.p { color: var(--protein-green); }
+    .macro-tag.c { color: var(--carb-blue); }
+    .macro-tag.f { color: var(--primary); }
+
+    /* Section Headers */
+    .section-head {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 50px;
+    }
+    .section-tag {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    /* Calculator Section */
+    .calculator-sec {
+      padding: 90px 0;
+      background: linear-gradient(180deg, var(--bg), var(--surface) 50%, var(--bg));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .calc-box {
+      background: var(--surface-card);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+    }
+    .calc-form-group {
+      margin-bottom: 24px;
+    }
+    .calc-label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .goal-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .goal-btn {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 14px 10px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .goal-btn.active, .goal-btn:hover {
+      background: rgba(251, 191, 36, 0.15);
+      border-color: var(--primary);
+      color: #fff;
+    }
+    .calc-select, .calc-input {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .calc-select:focus, .calc-input:focus {
+      border-color: var(--primary);
+    }
+    .calc-result-panel {
+      background: rgba(12, 13, 16, 0.7);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .target-val-big {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+      margin: 10px 0 4px;
+    }
+    .target-macros-split {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .split-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      padding: 10px 6px;
+      border-radius: var(--radius-sm);
+    }
+    .split-num {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    .split-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .bundle-recommendation {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      padding: 16px;
+      border-radius: var(--radius-md);
+      margin-top: 16px;
+    }
+    .rec-title {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+    .rec-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    /* Menu Section */
+    .menu-sec {
+      padding: 100px 0;
+    }
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    .tab-btn {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 10px 22px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--primary);
+      color: #0c0d10;
+      border-color: var(--primary);
+      font-weight: 800;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 28px;
+    }
+    .meal-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .meal-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6), var(--shadow-glow);
+    }
+    .meal-img-wrap {
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+    .meal-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .meal-card:hover .meal-img {
+      transform: scale(1.05);
+    }
+    .meal-tag-pill {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(12, 13, 16, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-bright);
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .meal-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .meal-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .meal-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .meal-price {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--primary);
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+    .meal-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+    .meal-macros-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      background: var(--surface-elevated);
+      padding: 10px;
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .m-pill-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+    .m-pill-lbl {
+      font-size: 0.68rem;
+      color: var(--subtle);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .add-to-box-btn {
+      width: 100%;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border-bright);
+      color: #fff;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .add-to-box-btn:hover {
+      background: var(--primary);
+      color: #0c0d10;
+      border-color: var(--primary);
+      font-weight: 800;
+      transform: translateY(-2px);
+    }
+
+    /* Subscription Plans */
+    .plans-sec {
+      padding: 100px 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      align-items: center;
+    }
+    .plan-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 30px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .plan-card.featured {
+      background: var(--surface-elevated);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow), 0 20px 40px rgba(0,0,0,0.6);
+      transform: scale(1.04);
+    }
+    .plan-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #0c0d10;
+      font-weight: 900;
+      font-size: 0.75rem;
+      padding: 4px 16px;
+      border-radius: 99px;
+      text-transform: uppercase;
+    }
+    .plan-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+    .plan-for {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .plan-price-wrap {
+      margin-bottom: 24px;
+    }
+    .plan-price {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #fff;
+    }
+    .plan-price span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .plan-features {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+    .plan-features li svg {
+      flex-shrink: 0;
+      color: var(--primary);
+    }
+
+    /* Prep Hacks Section */
+    .hacks-sec {
+      padding: 90px 0;
+    }
+    .hacks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .hack-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      transition: all 0.2s;
+    }
+    .hack-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+    .hack-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid var(--border-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+    }
+    .hack-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .hack-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Instagram / Social Proof */
+    .social-sec {
+      padding: 80px 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .ig-header-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius-lg);
+      padding: 24px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .ig-profile-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .ig-avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      object-fit: cover;
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+      background: #f59e0b;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .review-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+    }
+    .stars {
+      color: var(--primary);
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+    .review-text {
+      font-size: 0.92rem;
+      color: #e2e8f0;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .reviewer-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    .reviewer-name {
+      font-weight: 700;
+      color: #fff;
+    }
+    .reviewer-tag {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* FAQ */
+    .faq-sec {
+      padding: 90px 0;
+    }
+    .faq-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 20px 24px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      color: #fff;
+    }
+    .faq-answer {
+      padding: 0 24px 20px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-toggle {
+      transform: rotate(180deg);
+      color: var(--primary);
+    }
+    .faq-toggle {
+      transition: transform 0.2s;
+    }
+
+    /* Cart Slide-Over Drawer */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .cart-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 440px;
+      background: var(--surface);
+      border-left: 1px solid var(--border-bright);
+      z-index: 1001;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-overlay.open .cart-drawer {
+      transform: translateX(0);
+    }
+    .cart-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .close-cart-btn {
+      background: var(--surface-card);
+      color: var(--muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .close-cart-btn:hover {
+      color: #fff;
+    }
+    .cart-items-wrap {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .cart-item {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 12px;
+    }
+    .cart-item-img {
+      width: 65px;
+      height: 65px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .cart-item-info {
+      flex-grow: 1;
+    }
+    .cart-item-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .cart-item-macro {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .cart-item-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .qty-btn {
+      width: 24px;
+      height: 24px;
+      background: var(--surface-elevated);
+      color: #fff;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+    }
+    .cart-footer {
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      background: var(--surface-card);
+    }
+    .cart-macro-tally {
+      display: flex;
+      justify-content: space-between;
+      background: var(--surface-elevated);
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      margin-bottom: 14px;
+      font-size: 0.85rem;
+    }
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+    .cart-price-big {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-family: 'Outfit', sans-serif;
+    }
+    .cart-input {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 70px 0 30px;
+      background: #08080a;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .footer-brand h3 {
+      font-size: 1.6rem;
+      color: #fff;
+    }
+    .footer-links h4 {
+      color: #fff;
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+    .footer-links ul {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    .footer-links a:hover {
+      color: var(--primary-glow);
+    }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 24px;
+      font-size: 0.82rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .hero h1 { font-size: 3rem; }
+      .hero p.lead { margin: 0 auto 30px; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { margin: 0 auto; }
+      .hero-floating-badge { left: 20px; bottom: 20px; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .plans-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .plan-card.featured { transform: none; }
+      .hacks-grid, .reviews-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+      .nav-menu { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo">
+          <img src="logo.jpg" alt="Yumfav Logo" class="brand-logo-img" />
+          <div class="logo-text-col">
+            <span class="logo-name">Yumfav</span>
+            <span class="logo-tagline">Your taste, your fave</span>
+          </div>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="#menu">Weekly Bowls</a></li>
+          <li><a href="#calculator">Macro Calculator</a></li>
+          <li><a href="#plans">Subscription Tiers</a></li>
+          <li><a href="#hacks">Prep Hacks</a></li>
+          <li><a href="#reviews">Proof &amp; Reviews</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="cart-trigger-btn" onclick="openCart()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <span>My Box</span>
+            <span class="cart-counter" id="navCartCount">0</span>
+          </button>
+          <a href="https://wa.me/?text=Hello%20Yumfav!%20I%20want%20to%20inquire%20about%20weekly%20meal%20prep" target="_blank" class="btn btn-whatsapp" style="padding: 10px 20px; font-size: 0.88rem;">
+            Order on WhatsApp
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span>🍳</span> Lagos' #1 Macro-Calculated Kitchen • Your Taste, Your Fave
+          </div>
+          <h1>
+            Stop choosing between <span class="gradient-text">flavor</span> &amp; <span class="accent-text">fitness</span>.
+          </h1>
+          <p class="lead">
+            Chef-crafted, macro-balanced meals designed for healthy gains &amp; sustainable weight loss. Packed with 35g–55g clean protein, tested macros, and delivered fresh to your doorstep in Lagos.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-primary">
+              <span>Explore Weekly Bowls</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#calculator" class="btn btn-secondary">
+              <span>Calculate Your Macros</span>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div>
+              <div class="stat-num">35g-55g</div>
+              <div class="stat-label">Protein / Meal</div>
+            </div>
+            <div>
+              <div class="stat-num">100<span>%</span></div>
+              <div class="stat-label">Real Whole Foods</div>
+            </div>
+            <div>
+              <div class="stat-num">0<span>g</span></div>
+              <div class="stat-label">Refined Sugar</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card-preview">
+          <img 
+            src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" 
+            alt="Yumfav High Protein Bowl" 
+            class="hero-main-img"
+          />
+          <div class="hero-floating-badge">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <img src="logo.jpg" alt="Yumfav Icon" style="width: 20px; height: 20px; border-radius: 50%;" />
+              <div style="font-weight: 800; color: #fff; font-size: 0.95rem;">Suya Chicken Quinoa Bowl</div>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--muted); margin-bottom: 4px;">Tested Nutritional Breakdown:</div>
+            <div class="badge-macro-row">
+              <span class="macro-tag p">48g Protein</span>
+              <span class="macro-tag c">42g Carbs</span>
+              <span class="macro-tag f">12g Fat</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Macro & Goal Calculator -->
+  <section class="calculator-sec" id="calculator">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Interactive Fitness Engine</span>
+        <h2 class="section-title">Fuel Your Exact Goal</h2>
+        <p class="section-sub">Select your body target to calculate your daily macro split and get your recommended Yumfav meal bundle.</p>
+      </div>
+
+      <div class="calc-box">
+        <div class="calc-grid">
+          <!-- Controls -->
+          <div class="calc-controls">
+            <div class="calc-form-group">
+              <label class="calc-label">1. What is your primary objective?</label>
+              <div class="goal-options">
+                <button type="button" class="goal-btn active" onclick="setGoal('shred', this)">
+                  ⚡ Fat Loss (Shred)
+                </button>
+                <button type="button" class="goal-btn" onclick="setGoal('gains', this)">
+                  💪 Muscle Gains
+                </button>
+                <button type="button" class="goal-btn" onclick="setGoal('energy', this)">
+                  🔋 Maintain &amp; Energy
+                </button>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div class="calc-form-group">
+                <label class="calc-label">Current Weight (kg)</label>
+                <input type="number" id="calcWeight" class="calc-input" value="78" min="40" max="180" oninput="calculateMacros()">
+              </div>
+              <div class="calc-form-group">
+                <label class="calc-label">Training Frequency</label>
+                <select id="calcActivity" class="calc-select" onchange="calculateMacros()">
+                  <option value="1.2">Light (1-2 days/week)</option>
+                  <option value="1.4" selected>Moderate (3-4 days/week)</option>
+                  <option value="1.6">Intense (5-6 days/week)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="calc-form-group" style="margin-bottom: 0;">
+              <label class="calc-label">Daily Meals Needed</label>
+              <select id="calcMealCount" class="calc-select" onchange="calculateMacros()">
+                <option value="1">1 Meal / day (Workday Lunch)</option>
+                <option value="2" selected>2 Meals / day (Lunch + Dinner)</option>
+                <option value="3">3 Meals / day (Complete Nutrition)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Live Output Panel -->
+          <div class="calc-result-panel">
+            <div>
+              <div style="font-size: 0.85rem; color: var(--muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Recommended Target Intake</div>
+              <div class="target-val-big" id="resCalories">1,950 <span style="font-size: 1.1rem; color: #fff; font-weight: 500;">kcal/day</span></div>
+              <p style="font-size: 0.85rem; color: var(--muted);" id="resGoalDesc">Calorie-controlled deficit for steady, sustainable fat reduction while preserving lean mass.</p>
+
+              <div class="target-macros-split">
+                <div class="split-card">
+                  <div class="split-num" style="color: var(--protein-green);" id="resProtein">155g</div>
+                  <div class="split-label">Protein</div>
+                </div>
+                <div class="split-card">
+                  <div class="split-num" style="color: var(--carb-blue);" id="resCarbs">170g</div>
+                  <div class="split-label">Carbs</div>
+                </div>
+                <div class="split-card">
+                  <div class="split-num" style="color: var(--primary);" id="resFats">50g</div>
+                  <div class="split-label">Fats</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bundle-recommendation">
+              <div class="rec-title" id="recTitle">🍳 Recommended: 10-Meal Gains &amp; Shred Pack</div>
+              <div class="rec-desc" id="recDesc">High-protein lunch &amp; low-carb dinner combos designed to hit your daily 155g target with zero cooking.</div>
+              <button class="btn btn-primary" style="width: 100%; padding: 10px; font-size: 0.88rem;" onclick="addRecommendedBundle()">
+                + Load Recommended Box
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filterable Menu Section -->
+  <section class="menu-sec" id="menu">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Chef-Crafted Kitchen</span>
+        <h2 class="section-title">This Week's Macro Bowls</h2>
+        <p class="section-sub">Every bowl is portion-controlled, freshly cooked with clean cold-pressed oils, and stamped with verified macronutrients.</p>
+      </div>
+
+      <!-- Menu Category Tabs -->
+      <div class="menu-tabs">
+        <button class="tab-btn active" onclick="filterMenu('all', this)">All Bowls</button>
+        <button class="tab-btn" onclick="filterMenu('gains', this)">💪 Muscle Gains (High Protein)</button>
+        <button class="tab-btn" onclick="filterMenu('shred', this)">⚡ Fat Loss (Low Carb)</button>
+        <button class="tab-btn" onclick="filterMenu('breakfast', this)">🌅 Power Breakfasts</button>
+        <button class="tab-btn" onclick="filterMenu('smoothie', this)">🥤 Protein Shakes</button>
+      </div>
+
+      <!-- Meal Cards Grid -->
+      <div class="menu-grid" id="menuGrid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Bundles -->
+  <section class="plans-sec" id="plans">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Hassle-Free Consistency</span>
+        <h2 class="section-title">Weekly Prep Subscriptions</h2>
+        <p class="section-sub">Lock in your nutrition for the week. Delivered chilled in insulated thermal bags every Monday &amp; Wednesday.</p>
+      </div>
+
+      <div class="plans-grid">
+        <!-- Plan 1 -->
+        <div class="plan-card">
+          <div class="plan-name">Workday Shred</div>
+          <div class="plan-for">5 Lunches (Mon - Fri)</div>
+          <div class="plan-price-wrap">
+            <div class="plan-price">₦25,000<span>/wk</span></div>
+          </div>
+          <ul class="plan-features">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 5 Macro-calculated lunch bowls</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 40g+ average protein per meal</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Delivery to Lekki, VI &amp; Ikoyi included</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Weekly menu rotation</li>
+          </ul>
+          <button class="btn btn-secondary" style="width: 100%;" onclick="orderPlan('Workday Shred (5 Meals)', 25000)">Select 5-Day Plan</button>
+        </div>
+
+        <!-- Plan 2 (Featured) -->
+        <div class="plan-card featured">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-name">Gains Champion</div>
+          <div class="plan-for">10 Meals (Lunch + Dinner)</div>
+          <div class="plan-price-wrap">
+            <div class="plan-price">₦48,000<span>/wk</span></div>
+          </div>
+          <ul class="plan-features">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 10 Complete high-protein bowls</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Full workday lunch &amp; dinner covered</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Bi-weekly split delivery for max freshness</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Free insulated thermal tote bag</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Save ₦4,000 vs. single box orders</li>
+          </ul>
+          <button class="btn btn-primary" style="width: 100%;" onclick="orderPlan('Gains Champion (10 Meals)', 48000)">Choose Gains Champion</button>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="plan-card">
+          <div class="plan-name">Total Athlete</div>
+          <div class="plan-for">14 Meals + 4 Smoothies</div>
+          <div class="plan-price-wrap">
+            <div class="plan-price">₦72,000<span>/wk</span></div>
+          </div>
+          <ul class="plan-features">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 14 Gourmet fitness meal bowls</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 4 Whey isolate protein recovery shakes</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Full 7-day nutritional coverage</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Priority doorstep morning delivery</li>
+          </ul>
+          <button class="btn btn-secondary" style="width: 100%;" onclick="orderPlan('Total Athlete (14 Meals + Smoothies)', 72000)">Select Total Athlete</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prep Hacks & Nutrition Guide -->
+  <section class="hacks-sec" id="hacks">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Recipes &amp; Prep Hacks</span>
+        <h2 class="section-title">How To Keep It Fresh &amp; Juicy</h2>
+        <p class="section-sub">We don't just cook your food — we teach you the prep hacks to make healthy eating effortless.</p>
+      </div>
+
+      <div class="hacks-grid">
+        <div class="hack-card">
+          <div class="hack-icon">💧</div>
+          <h3 class="hack-title">The 3-Minute Moisture Hack</h3>
+          <p class="hack-text">
+            Never eat dry chicken again. When microwaving your Yumfav bowl, drape a damp paper towel loosely over the tray. The trapped steam rehydrates the grains and keeps chicken breast tender and juicy.
+          </p>
+        </div>
+
+        <div class="hack-card">
+          <div class="hack-icon">❄️</div>
+          <h3 class="hack-title">Fridge vs. Freezer Rules</h3>
+          <p class="hack-text">
+            Keep 3 days of meals in the main chiller section. Store Thursday &amp; Friday meals in the freezer upon delivery. Move them to the fridge the night before eating for effortless thawing without texture loss.
+          </p>
+        </div>
+
+        <div class="hack-card">
+          <div class="hack-icon">⚡</div>
+          <h3 class="hack-title">Anabolic Fuel Timing</h3>
+          <p class="hack-text">
+            Eat high-carb bowls (like Quinoa Jollof or Sweet Potato Mash) 90 minutes before heavy lifting sessions for glycogen saturation. Opt for Low-Carb Cauliflower Stir-fries on rest days for rapid fat burning.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof & Instagram Community -->
+  <section class="social-sec" id="reviews">
+    <div class="container">
+      <!-- Instagram Header -->
+      <div class="ig-header-card">
+        <div class="ig-profile-info">
+          <img 
+            src="logo.jpg" 
+            alt="Yumfav official logo" 
+            class="ig-avatar"
+          />
+          <div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 6px;">
+              <span>@yum.fav</span>
+              <span style="color: var(--primary); font-size: 0.95rem;">✓</span>
+            </div>
+            <div style="color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;">Your taste, your fave</div>
+            <div style="color: var(--muted); font-size: 0.88rem;">"Stop choosing between flavor &amp; fitness!"</div>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/yum.fav/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.88rem;">
+          <span>Follow @yum.fav on Instagram ↗</span>
+        </a>
+      </div>
+
+      <!-- Reviews -->
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            "Finally, food in Lagos that hits my 160g protein target without tasting like boiled rubber! The Suya Chicken Quinoa bowl tastes like an absolute cheat meal."
+          </p>
+          <div class="reviewer-info">
+            <span class="reviewer-name">Tunde O.</span>
+            <span class="reviewer-tag">Lekki Phase 1 (Gains Plan)</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            "Down 4.2kg in 3 weeks while eating meals that actually keep me full. Saves me over 8 hours of cooking and market runs every weekend."
+          </p>
+          <div class="reviewer-info">
+            <span class="reviewer-name">Amara K.</span>
+            <span class="reviewer-tag">Ikoyi (Workday Shred)</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            "As a busy tech lead, I used to skip meals or order oily fast food. Yumfav keeps my energy stable all afternoon. Clean macros, on-time delivery."
+          </p>
+          <div class="reviewer-info">
+            <span class="reviewer-name">Dr. Femi A.</span>
+            <span class="reviewer-tag">Victoria Island (Total Athlete)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-sec">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Got Questions?</span>
+        <h2 class="section-title">Frequently Asked</h2>
+      </div>
+
+      <div class="faq-wrap">
+        <div class="faq-item active">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>How do you calculate and verify the macros?</span>
+            <span class="faq-toggle">▼</span>
+          </div>
+          <div class="faq-answer">
+            Every protein cut, carb source, and healthy fat is weighed to the exact gram before cooking using laboratory-grade digital scales. We account for cooking yield and cold-pressed oil absorption so the nutritional stats on your label are accurate.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Which locations in Lagos do you deliver to?</span>
+            <span class="faq-toggle">▼</span>
+          </div>
+          <div class="faq-answer">
+            We deliver across Lagos Island (Lekki Phase 1, Ikoyi, Victoria Island, Oniru, Chevron, Ajah) and Lagos Mainland (Ikeja GRA, Maryland, Surulere, Yaba). Deliveries go out in temperature-controlled insulated bags.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Can I customize my meals or swap ingredients?</span>
+            <span class="faq-toggle">▼</span>
+          </div>
+          <div class="faq-answer">
+            Yes! When ordering via WhatsApp, let us know your allergies (e.g. no peanuts, no dairy, gluten sensitivity) or ingredient preferences (e.g. swap brown rice for extra veggies). We tailor your box to your needs.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>How long do the meals stay fresh?</span>
+            <span class="faq-toggle">▼</span>
+          </div>
+          <div class="faq-answer">
+            Our vacuum-sealed meal prep trays stay fresh in your refrigerator chiller for up to 4 days, or up to 3 weeks if stored in the freezer. Our batch deliveries on Monday &amp; Wednesday guarantee you always have peak freshness.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Drawer Overlay -->
+  <div class="cart-overlay" id="cartOverlay" onclick="if(event.target === this) closeCart()">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <img src="logo.jpg" alt="Yumfav" style="width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--primary);" />
+          <div>
+            <div class="cart-title">Your Meal Box</div>
+            <div style="font-size: 0.8rem; color: var(--muted);" id="cartItemSummary">0 items selected</div>
+          </div>
+        </div>
+        <button class="close-cart-btn" onclick="closeCart()">✕</button>
+      </div>
+
+      <div class="cart-items-wrap" id="cartItemsContainer">
+        <!-- Cart Items injected via JS -->
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-macro-tally">
+          <div><strong id="cartTotalCalories">0</strong> kcal</div>
+          <div><strong id="cartTotalProtein" style="color: var(--protein-green);">0g</strong> Protein</div>
+          <div><strong id="cartTotalCarbs" style="color: var(--carb-blue);">0g</strong> Carbs</div>
+        </div>
+
+        <div class="cart-total-row">
+          <span style="color: var(--muted);">Total Box Price</span>
+          <span class="cart-price-big" id="cartTotalPrice">₦0</span>
+        </div>
+
+        <input type="text" id="custName" class="cart-input" placeholder="Your Name (for delivery)">
+        <input type="text" id="custAddress" class="cart-input" placeholder="Delivery Address / Area (e.g. Lekki Phase 1)">
+
+        <button class="btn btn-whatsapp" style="width: 100%; padding: 14px; font-size: 1rem;" onclick="checkoutWhatsApp()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          Send Order to WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+            <img src="logo.jpg" alt="Yumfav Logo" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--primary);" />
+            <div>
+              <h3 style="margin: 0; font-size: 1.5rem; line-height: 1;">Yumfav</h3>
+              <span style="color: var(--primary); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Your taste, your fave</span>
+            </div>
+          </div>
+          <p style="max-width: 380px; margin-bottom: 20px;">
+            "Stop choosing between flavor &amp; fitness!" Delicious, macro-friendly meals for healthy gains &amp; sustainable weight loss in Lagos, Nigeria.
+          </p>
+          <div style="display: flex; gap: 12px;">
+            <a href="https://www.instagram.com/yum.fav/" target="_blank" style="color: var(--primary); font-weight: 800;">Instagram: @yum.fav ↗</a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#menu">Weekly Menu</a></li>
+            <li><a href="#calculator">Macro Calculator</a></li>
+            <li><a href="#plans">Weekly Subscriptions</a></li>
+            <li><a href="#hacks">Prep &amp; Storage Hacks</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Delivery Hubs</h4>
+          <ul>
+            <li>Lekki &amp; Victoria Island</li>
+            <li>Ikoyi &amp; Oniru</li>
+            <li>Ikeja GRA &amp; Maryland</li>
+            <li>Ajah &amp; Orchid Corridor</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Yumfav. All Rights Reserved. "Your taste, your fave."</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Menu Data
+    const meals = [
+      {
+        id: 1,
+        name: "Grilled Suya Chicken & Quinoa Jollof",
+        category: "gains",
+        desc: "Hausa suya-spiced tender chicken breast served over fluffy antioxidant quinoa jollof with roasted bell peppers.",
+        calories: 490,
+        protein: 48,
+        carbs: 42,
+        fat: 12,
+        price: 5200,
+        tag: "Bestseller",
+        img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 2,
+        name: "Lean Peppered Beef & Sweet Potato Puree",
+        category: "gains",
+        desc: "95% extra lean minced beef medallions in aromatic pepper sauce with slow-roasted cinnamon sweet potato mash.",
+        calories: 540,
+        protein: 52,
+        carbs: 46,
+        fat: 14,
+        price: 5800,
+        tag: "High Protein",
+        img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 3,
+        name: "Pan-Seared Salmon & Lemon Asparagus",
+        category: "shred",
+        desc: "Wild-caught Atlantic salmon seared with garlic herb cold-pressed olive oil, paired with crunchy charred greens.",
+        calories: 510,
+        protein: 44,
+        carbs: 16,
+        fat: 24,
+        price: 7500,
+        tag: "Keto / Low Carb",
+        img: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 4,
+        name: "Spicy Smoked Turkey & Cauliflower Fried Rice",
+        category: "shred",
+        desc: "Low-carb cauliflower florets wok-tossed with egg white ribbons, scallions, chili, and slow-smoked turkey breast.",
+        calories: 380,
+        protein: 46,
+        carbs: 14,
+        fat: 12,
+        price: 4900,
+        tag: "Fat Loss Hero",
+        img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 5,
+        name: "Honey Dijon Turkey Meatballs & Brown Rice",
+        category: "gains",
+        desc: "Hand-rolled lean turkey meatballs in zesty dijon mustard and raw honey glaze with steamed whole grain brown rice.",
+        calories: 460,
+        protein: 42,
+        carbs: 45,
+        fat: 10,
+        price: 5000,
+        tag: "Lean Bulk",
+        img: "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 6,
+        name: "Power Egg White, Suya Strips & Avo Scramble",
+        category: "breakfast",
+        desc: "Lightly scrambled egg whites with sliced chicken suya, baby spinach, plum tomatoes, and ripe sliced avocado.",
+        calories: 360,
+        protein: 38,
+        carbs: 12,
+        fat: 16,
+        price: 4200,
+        tag: "Breakfast",
+        img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 7,
+        name: "Zobo Berry Antioxidant Protein Smoothie",
+        category: "smoothie",
+        desc: "Organic brewed Zobo (hibiscus) blended with grass-fed whey isolate, wild blueberries, chia seeds, and ginger.",
+        calories: 220,
+        protein: 28,
+        carbs: 18,
+        fat: 2,
+        price: 3500,
+        tag: "Recovery",
+        img: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 8,
+        name: "Peanut Butter Cacao Protein Overnight Oats",
+        category: "breakfast",
+        desc: "Rolled oats steeped in unsweetened almond milk, dark cacao nibs, pure natural peanut butter, and vanilla whey.",
+        calories: 390,
+        protein: 32,
+        carbs: 44,
+        fat: 11,
+        price: 3800,
+        tag: "Breakfast",
+        img: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&w=600&q=80"
+      }
+    ];
+
+    // State
+    let cart = [];
+    let currentGoal = 'shred';
+
+    // Render Menu
+    function renderMenu(filter = 'all') {
+      const grid = document.getElementById('menuGrid');
+      grid.innerHTML = '';
+      
+      const filtered = filter === 'all' ? meals : meals.filter(m => m.category === filter);
+
+      filtered.forEach(m => {
+        const card = document.createElement('div');
+        card.className = 'meal-card';
+        card.innerHTML = `
+          <div class="meal-img-wrap">
+            <img src="${m.img}" alt="${m.name}" class="meal-img" loading="lazy">
+            <span class="meal-tag-pill">${m.tag}</span>
+          </div>
+          <div class="meal-body">
+            <div>
+              <div class="meal-title-row">
+                <h3 class="meal-name">${m.name}</h3>
+                <div class="meal-price">₦${m.price.toLocaleString()}</div>
+              </div>
+              <p class="meal-desc">${m.desc}</p>
+            </div>
+            <div>
+              <div class="meal-macros-grid">
+                <div>
+                  <div class="m-pill-val">${m.calories}</div>
+                  <div class="m-pill-lbl">Calories</div>
+                </div>
+                <div>
+                  <div class="m-pill-val" style="color: var(--protein-green);">${m.protein}g</div>
+                  <div class="m-pill-lbl">Protein</div>
+                </div>
+                <div>
+                  <div class="m-pill-val" style="color: var(--carb-blue);">${m.carbs}g</div>
+                  <div class="m-pill-lbl">Carbs</div>
+                </div>
+                <div>
+                  <div class="m-pill-val" style="color: var(--primary);">${m.fat}g</div>
+                  <div class="m-pill-lbl">Fat</div>
+                </div>
+              </div>
+              <button class="add-to-box-btn" onclick="addToCart(${m.id})">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                + Add to Meal Box
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterMenu(cat, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderMenu(cat);
+    }
+
+    // Calculator Logic
+    function setGoal(goal, btn) {
+      currentGoal = goal;
+      document.querySelectorAll('.goal-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      calculateMacros();
+    }
+
+    function calculateMacros() {
+      const weight = parseFloat(document.getElementById('calcWeight').value) || 75;
+      const activity = parseFloat(document.getElementById('calcActivity').value) || 1.4;
+      const mealCount = parseInt(document.getElementById('calcMealCount').value) || 2;
+
+      let bmr = weight * 22;
+      let tdee = bmr * activity;
+      let targetCal = tdee;
+      let proteinGrams = Math.round(weight * 2.0);
+      let carbsGrams = 180;
+      let fatGrams = 50;
+      let goalDesc = "";
+      let recTitle = "";
+      let recDesc = "";
+
+      if (currentGoal === 'shred') {
+        targetCal = Math.round(tdee - 500);
+        proteinGrams = Math.round(weight * 2.2);
+        carbsGrams = Math.round((targetCal * 0.35) / 4);
+        fatGrams = Math.round((targetCal * 0.25) / 9);
+        goalDesc = "Calorie-controlled deficit for steady fat loss while preserving maximum lean muscle.";
+        recTitle = "🍳 Recommended: 5-Day Shred Lunch & Dinner Box";
+        recDesc = "Pair our high-protein Turkey Cauliflower Rice with Lemon Salmon for effortless fat loss.";
+      } else if (currentGoal === 'gains') {
+        targetCal = Math.round(tdee + 350);
+        proteinGrams = Math.round(weight * 2.0);
+        carbsGrams = Math.round((targetCal * 0.45) / 4);
+        fatGrams = Math.round((targetCal * 0.25) / 9);
+        goalDesc = "Clean lean-bulk surplus to maximize strength, recovery, and hypertrophy without unnecessary fat.";
+        recTitle = "💪 Recommended: 10-Meal Gains Champion Bundle";
+        recDesc = "Heavy-hitting Suya Chicken Quinoa & Peppered Beef mash to fuel tough workouts.";
+      } else {
+        targetCal = Math.round(tdee);
+        proteinGrams = Math.round(weight * 1.8);
+        carbsGrams = Math.round((targetCal * 0.40) / 4);
+        fatGrams = Math.round((targetCal * 0.30) / 9);
+        goalDesc = "Balanced maintenance intake for all-day steady physical and mental performance.";
+        recTitle = "🔋 Recommended: Workday Fuel Pack (5 Lunches)";
+        recDesc = "Never worry about work lunches. Clean energy without the 2PM food coma.";
+      }
+
+      document.getElementById('resCalories').innerHTML = targetCal.toLocaleString() + ' <span style="font-size: 1.1rem; color: #fff; font-weight: 500;">kcal/day</span>';
+      document.getElementById('resProtein').innerText = proteinGrams + 'g';
+      document.getElementById('resCarbs').innerText = carbsGrams + 'g';
+      document.getElementById('resFats').innerText = fatGrams + 'g';
+      document.getElementById('resGoalDesc').innerText = goalDesc;
+      document.getElementById('recTitle').innerText = recTitle;
+      document.getElementById('recDesc').innerText = recDesc;
+    }
+
+    function addRecommendedBundle() {
+      if (currentGoal === 'shred') {
+        addToCart(4); // Turkey cauliflower
+        addToCart(3); // Salmon
+        addToCart(7); // Zobo smoothie
+      } else if (currentGoal === 'gains') {
+        addToCart(1); // Suya Chicken Quinoa
+        addToCart(2); // Peppered Beef
+        addToCart(5); // Turkey meatballs
+      } else {
+        addToCart(1); // Suya Chicken
+        addToCart(6); // Egg white scramble
+      }
+      openCart();
+    }
+
+    // Cart Management
+    function addToCart(mealId) {
+      const existing = cart.find(i => i.id === mealId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        const item = meals.find(m => m.id === mealId);
+        cart.push({ ...item, qty: 1 });
+      }
+      updateCartUI();
+    }
+
+    function changeQty(mealId, delta) {
+      const idx = cart.findIndex(i => i.id === mealId);
+      if (idx !== -1) {
+        cart[idx].qty += delta;
+        if (cart[idx].qty <= 0) {
+          cart.splice(idx, 1);
+        }
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((sum, i) => sum + i.qty, 0);
+      document.getElementById('navCartCount').innerText = count;
+      document.getElementById('cartItemSummary').innerText = `${count} ${count === 1 ? 'item' : 'items'} in box`;
+
+      const container = document.getElementById('cartItemsContainer');
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 50px 20px; color: var(--muted);">
+            <div style="font-size: 2.5rem; margin-bottom: 10px;">🍳</div>
+            <p style="font-weight: 700; color: #fff;">Your meal box is empty</p>
+            <p style="font-size: 0.85rem; margin-top: 6px;">Add dishes from the menu or use the Macro Calculator above to fuel your week.</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = cart.map(item => `
+          <div class="cart-item">
+            <img src="${item.img}" class="cart-item-img" alt="${item.name}">
+            <div class="cart-item-info">
+              <div class="cart-item-title">${item.name}</div>
+              <div class="cart-item-macro">${item.protein}g Protein | ${item.calories} kcal</div>
+              <div class="cart-item-actions">
+                <span style="font-weight: 800; color: var(--primary);">₦${(item.price * item.qty).toLocaleString()}</span>
+                <div class="qty-controls">
+                  <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+                  <span style="font-size: 0.9rem; font-weight: 700; min-width: 18px; text-align: center;">${item.qty}</span>
+                  <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Tallies
+      const totalCal = cart.reduce((sum, i) => sum + (i.calories * i.qty), 0);
+      const totalP = cart.reduce((sum, i) => sum + (i.protein * i.qty), 0);
+      const totalC = cart.reduce((sum, i) => sum + (i.carbs * i.qty), 0);
+      const totalPrice = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+
+      document.getElementById('cartTotalCalories').innerText = totalCal;
+      document.getElementById('cartTotalProtein').innerText = totalP + 'g';
+      document.getElementById('cartTotalCarbs').innerText = totalC + 'g';
+      document.getElementById('cartTotalPrice').innerText = '₦' + totalPrice.toLocaleString();
+    }
+
+    function openCart() {
+      document.getElementById('cartOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      document.getElementById('cartOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function orderPlan(planName, price) {
+      const msg = encodeURIComponent(
+        `Hello Yumfav! I want to subscribe to the *${planName}* (₦${price.toLocaleString()}/week).\n\nPlease confirm delivery schedule and payment details for Lagos delivery.`
+      );
+      window.open(`https://wa.me/?text=${msg}`, '_blank');
+    }
+
+    function checkoutWhatsApp() {
+      if (cart.length === 0) {
+        alert('Please add at least 1 meal to your box before checking out!');
+        return;
+      }
+
+      const name = document.getElementById('custName').value.trim() || "Customer";
+      const address = document.getElementById('custAddress').value.trim() || "Lagos (Address to be specified)";
+
+      const totalCal = cart.reduce((sum, i) => sum + (i.calories * i.qty), 0);
+      const totalP = cart.reduce((sum, i) => sum + (i.protein * i.qty), 0);
+      const totalPrice = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+
+      let itemsList = cart.map(i => `• ${i.qty}x ${i.name} (${i.protein * i.qty}g Protein, ₦${(i.price * i.qty).toLocaleString()})`).join('\n');
+
+      const messageText = 
+`🍳 *NEW YUMFAV MEAL BOX ORDER*
+---------------------------------
+*Name:* ${name}
+*Delivery Area:* ${address}
+
+*Ordered Items:*
+${itemsList}
+
+---------------------------------
+*Total Box Protein:* ${totalP}g
+*Total Box Calories:* ${totalCal} kcal
+*Total Price:* ₦${totalPrice.toLocaleString()}
+
+Please confirm delivery slot and payment details!`;
+
+      const waUrl = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    // FAQ Accordion
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      item.classList.toggle('active');
+    }
+
+    // Initial Load
+    renderMenu('all');
+    calculateMacros();
+  </script>
+</body>
+</html>
