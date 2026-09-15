@@ -11,6 +11,7 @@
   <meta property="og:description" content="Stop choosing between flavor &amp; fitness! Macro-friendly meals for healthy gains &amp; sustainable weight loss." />
   <meta property="og:image" content="images/sealed-meal-boxes.jpg" />
   <link rel="icon" type="image/jpeg" href="logo.jpg" />
+  <link rel="preload" as="image" href="images/chicken-jollof-prep.jpg" fetchpriority="high" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1151,6 +1152,8 @@
             src="images/chicken-jollof-prep.jpg" 
             alt="Yumfav Freshly Cooked Batch Chicken &amp; Jollof Bowls" 
             class="hero-main-img"
+            fetchpriority="high"
+            decoding="async"
           />
           <div class="hero-floating-badge">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
@@ -1178,6 +1181,8 @@
           src="images/sealed-meal-boxes.jpg" 
           alt="Yumfav Vacuum-Sealed Branded Meal Prep Trays" 
           class="packaging-img"
+          loading="lazy"
+          decoding="async"
         />
         <div class="packaging-info">
           <span class="section-tag">Guaranteed Freshness</span>
